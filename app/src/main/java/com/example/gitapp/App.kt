@@ -7,9 +7,8 @@ import com.example.gitapp.data.retrofit.RetrofitProjectRepoImpl
 import com.example.gitapp.domain.RepoUserLogin
 
 class App: Application() {
-
-     val gitProjectRepo: RepoUserLogin by lazy { MockProjectRepoImpl() }
-    //val gitProjectRepo: RepoUserLogin by lazy { RetrofitProjectRepoImpl() }
+    //val gitProjectRepo: RepoUserLogin by lazy { MockProjectRepoImpl() }
+    val gitProjectRepo: RepoUserLogin by lazy { RetrofitProjectRepoImpl() }
 }
 
 val Context.app: App
