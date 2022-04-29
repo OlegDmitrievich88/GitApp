@@ -9,15 +9,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gitapp.R
 import com.example.gitapp.app
 import com.example.gitapp.databinding.LoginUserListFragmentBinding
+import com.example.gitapp.domain.GitUserEntity
 
-class LoginUserListFragment : Fragment() {
+class LoginUserListFragment : Fragment(),RvClick {
 
     private lateinit var binding: LoginUserListFragmentBinding
     private val viewModelListUser: UserRepoViewModel by activityViewModels {RepoViewModelFactory(
         context?.app!!.gitProjectRepo)}
-    private val adapter = RvUserListAdapter()
+    private val adapter = RvUserListAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +40,8 @@ class LoginUserListFragment : Fragment() {
     }
 
     private fun goingEvents() {
-        viewModelListUser.onShowUser(binding.rwUserList.toString())
+        val OlegDmitrievich88 = "OlegDmitrievich88"
+        viewModelListUser.onShowUser(OlegDmitrievich88)
     }
 
     private fun initIncomingEvents() {
@@ -54,7 +57,12 @@ class LoginUserListFragment : Fragment() {
         }
     }
 
-
+    override fun onItemClicked(position: GitUserEntity) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.container,UserCardFragment())
+            .addToBackStack("")
+            .commit()
+    }
 
 
 }

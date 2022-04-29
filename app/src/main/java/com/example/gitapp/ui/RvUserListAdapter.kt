@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gitapp.databinding.ItemForUserLoginListBinding
 import com.example.gitapp.domain.GitUserEntity
 
-class RvUserListAdapter: RecyclerView.Adapter<RvUserListAdapter.UserLoginViewHolder>() {
+class RvUserListAdapter(private val itemClick: RvClick): RecyclerView.Adapter<RvUserListAdapter.UserLoginViewHolder>() {
 
      private var data: List<GitUserEntity> = emptyList()
 
@@ -20,7 +20,7 @@ class RvUserListAdapter: RecyclerView.Adapter<RvUserListAdapter.UserLoginViewHol
     }
 
     override fun onBindViewHolder(holder: UserLoginViewHolder, position: Int) {
-        holder.bind(getItemPos(position))
+        holder.bind(getItemPos(position),itemClick)
     }
 
     override fun getItemCount(): Int {
@@ -37,12 +37,15 @@ class RvUserListAdapter: RecyclerView.Adapter<RvUserListAdapter.UserLoginViewHol
             companion object{
                 fun onCreate(parent: ViewGroup): UserLoginViewHolder {
                     val inflater = LayoutInflater.from(parent.context)
-                    return UserLoginViewHolder(ItemForUserLoginListBinding.inflate(inflater))
+                    return UserLoginViewHolder(ItemForUserLoginListBinding.inflate(inflater), )
                 }
             }
-
-        fun bind(item: GitUserEntity){
+//private val itemClick: RvClick
+        fun bind(item: GitUserEntity,itemClick: RvClick){
             binding.userNameTextView.text = item.name.toString()
+            binding.itemForRv.setOnClickListener {
+                itemClick.onItemClicked(item)
+            }
         }
 
     }
