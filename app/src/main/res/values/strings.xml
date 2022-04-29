@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitApp</string>
+    <string name="gitapp">Список польщователей GitApp</string>
+    <string name="oleg_dmitrievich">Oleg Dmitrievich</string>
 </resources>

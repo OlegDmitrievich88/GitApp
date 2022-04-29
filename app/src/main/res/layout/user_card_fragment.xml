@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/user_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Oleg Dmitrievich"
+        android:gravity="center"
+        android:textSize="30sp"/>
+
+    <ImageView
+        android:id="@+id/user_photo_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/user_description_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:hint="Oleg Dmitrievich super duper programmer. Programmed programmed but not programmed"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_repository_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
